@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boolzapp</title>
+    <title>Vue Boolzapp</title>
     <script src="https://kit.fontawesome.com/08481473c4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,7 +61,7 @@
                     <!-- Sidebar with all the chat info -->
 
                     <ul class="chat-info">
-                        <li class="chat-info-specifications" v-for= "(contact, i) in contacts" @click="currentContactIndex = i">
+                        <li class="chat-info-specifications" v-for= "(contact, i) in contacts" @click="currentActiveContact(i)">
                             <img class="chat-profile-picture" :src="contact.avatar" alt="friend profile picture">
                             <div class="other-person-info">
                                 <h3 class="chat-name">{{ contact.name }}</h3>
@@ -117,7 +117,14 @@
 
                     <footer class="type-chat">
                         <a href="#"><i class="fa-regular fa-face-smile emoji-icon"></i></a>
-                        <input type="text" placeholder="Scrivi un messaggio" class="chat-box">
+
+                        <input
+                        type="text" 
+                        placeholder="Scrivi un messaggio" 
+                        class="chat-box" 
+                        v-model.trim="inputMessageValue"
+                        @keyup.enter="sendMessage()">
+
                         <a href="#"><i class="fa-solid fa-microphone recording-icon"></i></a>
                     </footer>
 

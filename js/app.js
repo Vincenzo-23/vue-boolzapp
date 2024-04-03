@@ -4,6 +4,7 @@ const { createApp } = Vue
     data() {
         return {
             currentContactIndex: 0,
+            inputMessageValue: ``,
             contacts: [
                 {
                     name: 'Michele',
@@ -170,5 +171,24 @@ const { createApp } = Vue
         
         
         }
+    },
+    methods:{
+        currentActiveContact(index){
+            this.currentContactIndex = index
+        },
+        sendMessage(){
+            if(this.inputMessageValue !== "") {
+
+                this.contacts[this.currentContactIndex].messages.push(
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: this.inputMessageValue,
+                        status: 'sent'
+                    }
+                )
+            }
+
+            this.inputMessageValue = ""
+        },
     }
   }).mount('#app')
