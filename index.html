@@ -61,82 +61,16 @@
                     <!-- Sidebar with all the chat info -->
 
                     <ul class="chat-info">
-
-
-                        <li class="chat-info-specifications">
-                            <img class="chat-profile-picture" src="./img/avatar_1.jpg" alt="friend profile picture">
+                        <li class="chat-info-specifications" v-for= "(contact) in contacts">
+                            <img class="chat-profile-picture" :src="contact.avatar" alt="friend profile picture">
                             <div class="other-person-info">
-                                <h3 class="chat-name">Michele</h3>
+                                <h3 class="chat-name">{{ contact.name }}</h3>
                                 <p class="chat-preview">Lorem ipsum dolor sit amet</p>
                             </div>
                             <div class="chat-time">16:15</div>
                         </li>
-
-                        <li class="chat-info-specifications">
-                            <img class="chat-profile-picture" src="./img/avatar_2.jpg" alt="friend profile picture">
-                            <div class="other-person-info">
-                                <h3 class="chat-name">Fabio</h3>
-                                <p class="chat-preview">Lorem ipsum dolor sit amet</p>
-                            </div>
-                            <div class="chat-time">16:05</div>
-                        </li>
-
-                        <li class="chat-info-specifications">
-                            <img class="chat-profile-picture" src="./img/avatar_3.jpg" alt="friend profile picture">
-                            <div class="other-person-info">
-                                <h3 class="chat-name">Samuele</h3>
-                                <p class="chat-preview">Lorem ipsum dolor sit amet</p>
-                            </div>
-                            <div class="chat-time">16:03</div>
-                        </li>
-
-                        <li class="chat-info-specifications">
-                            <img class="chat-profile-picture" src="./img/avatar_4.jpg" alt="friend profile picture">
-                            <div class="other-person-info">
-                                <h3 class="chat-name">Alesandro B.</h3>
-                                <p class="chat-preview">Lorem ipsum dolor sit amet</p>
-                            </div>
-                            <div class="chat-time">15:50</div>
-                        </li>
-
-                        <li class="chat-info-specifications">
-                            <img class="chat-profile-picture" src="./img/avatar_5.jpg" alt="friend profile picture">
-                            <div class="other-person-info">
-                                <h3 class="chat-name">Alessandro L.</h3>
-                                <p class="chat-preview">Lorem ipsum dolor sit amet</p>
-                            </div>
-                            <div class="chat-time">15:45</div>
-                        </li>
-
-                        <li class="chat-info-specifications">
-                            <img class="chat-profile-picture" src="./img/avatar_6.jpg" alt="friend profile picture">
-                            <div class="other-person-info">
-                                <h3 class="chat-name">Claudia</h3>
-                                <p class="chat-preview">Lorem ipsum dolor sit amet</p>
-                            </div>
-                            <div class="chat-time">15:40</div>
-                        </li>
-
-                        <li class="chat-info-specifications">
-                            <img class="chat-profile-picture" src="./img/avatar_7.jpg" alt="friend profile picture">
-                            <div class="other-person-info">
-                                <h3 class="chat-name">Federico</h3>
-                                <p class="chat-preview">Lorem ipsum dolor sit amet</p>
-                            </div>
-                            <div class="chat-time">15:22</div>
-                        </li>
-
-                        <li class="chat-info-specifications">
-                            <img class="chat-profile-picture" src="./img/avatar_8.jpg" alt="friend profile picture">
-                            <div class="other-person-info">
-                                <h3 class="chat-name">Davide</h3>
-                                <p class="chat-preview">Lorem ipsum dolor sit amet</p>
-                            </div>
-                            <div class="chat-time">15:15</div>
-                        </li>
-
-                        
                     </ul>
+
 
                     
                 </div>
