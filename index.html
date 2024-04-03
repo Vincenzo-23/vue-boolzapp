@@ -61,7 +61,7 @@
                     <!-- Sidebar with all the chat info -->
 
                     <ul class="chat-info">
-                        <li class="chat-info-specifications" v-for= "(contact) in contacts">
+                        <li class="chat-info-specifications" v-for= "(contact, i) in contacts" @click="currentContactIndex = i">
                             <img class="chat-profile-picture" :src="contact.avatar" alt="friend profile picture">
                             <div class="other-person-info">
                                 <h3 class="chat-name">{{ contact.name }}</h3>
@@ -82,7 +82,7 @@
                     <!-- Header app bar -->
 
                     <header class="contact-info">
-                        <img class="contact-info-picture" src="./img/avatar_1.jpg" alt="friend profile picture">
+                        <img class="contact-info-picture" :src="contacts[currentContactIndex].avatar" alt="friend profile picture">
                         <div class="person-contact-info">
                             <h3 class="person-name">Michele</h3>
                             <p class="last-access">Ultimo accesso oggi alle 16:26</p>
@@ -98,17 +98,18 @@
 
                     <main class="main-chat">
                         
-                        <div class="chat-content chat-content-green">
-                            <div class="chat-content-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sed nulla blanditiis nostrum qui labore nihil ducimus doloribus, impedit fuga delectus voluptatibus ipsam dolorem, necessitatibus hic adipisci nam praesentium consequatur.</div>
+
+                        <div class="chat-content d-flex" v-for= "(el, i) in contacts[currentContactIndex].messages" :class="[contacts[currentContactIndex].messages[i].status]">
+                            <div class="chat-content-message">{{ el.message }}</div>
                             <div class="chat-content-time">16:13</div>
                             <i class="fa-solid fa-chevron-down chat-content-arrow"></i>
                         </div>
 
-                        <div class="chat-content chat-content-white">
+                        <!-- <div class="chat-content chat-content-white">
                             <div class="chat-content-message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, accusamus? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem eos autem repellendus voluptates facere ex voluptatibus alias quos mollitia nostrum, nam dicta nobis incidunt officiis hic natus doloribus possimus asperiores.</div>
                             <div class="chat-content-time">16:15</div>
                             <i class="fa-solid fa-chevron-down chat-content-arrow"></i>
-                        </div>
+                        </div> -->
 
                     </main>
 
