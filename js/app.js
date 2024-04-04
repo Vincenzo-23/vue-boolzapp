@@ -190,5 +190,17 @@ const { createApp } = Vue
 
             this.inputMessageValue = ""
         },
-    }
+        receiveMessage(){
+            setTimeout(() => {
+                this.contacts[this.currentContactIndex].messages.push(
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: `Ok`,
+                        status: 'received'
+                    }
+                )
+            }, 1000)
+        },
+        
+    },
   }).mount('#app')

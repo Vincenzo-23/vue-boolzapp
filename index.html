@@ -61,7 +61,7 @@
                     <!-- Sidebar with all the chat info -->
 
                     <ul class="chat-info">
-                        <li class="chat-info-specifications" v-for= "(contact, i) in contacts" @click="currentActiveContact(i)">
+                        <li class="chat-info-specifications" v-for= "(contact, i) in contacts" :class=" i === currentContactIndex ? `active` : `` " @click="currentActiveContact(i)">
                             <img class="chat-profile-picture" :src="contact.avatar" alt="friend profile picture">
                             <div class="other-person-info">
                                 <h3 class="chat-name">{{ contact.name }}</h3>
@@ -99,9 +99,9 @@
                     <main class="main-chat">
                         
 
-                        <div class="chat-content d-flex" v-for= "(el, i) in contacts[currentContactIndex].messages" :class="[contacts[currentContactIndex].messages[i].status]">
+                        <div class="chat-content d-flex" v-for= "(el, i) in contacts[currentContactIndex].messages" :class="el.status">
                             <div class="chat-content-message">{{ el.message }}</div>
-                            <div class="chat-content-time">16:13</div>
+                            <div class="chat-content-time">{{ el.date.slice(11,16) }}</div>
                             <i class="fa-solid fa-chevron-down chat-content-arrow"></i>
                         </div>
 
@@ -123,7 +123,7 @@
                         placeholder="Scrivi un messaggio" 
                         class="chat-box" 
                         v-model.trim="inputMessageValue"
-                        @keyup.enter="sendMessage()">
+                        @keyup.enter="sendMessage(), receiveMessage()">
 
                         <a href="#"><i class="fa-solid fa-microphone recording-icon"></i></a>
                     </footer>
