@@ -52,7 +52,9 @@
                     <!-- Sidebar search bar -->
 
                     <div class="search-bar">
-                        <input type="text" name="search" class="bar" placeholder="Cerca o inizia una nuova chat">
+                        <input 
+                        v-model="searchValue" 
+                        type="text" name="search" class="bar" placeholder="Cerca o inizia una nuova chat">
                         <i class="fa-solid fa-magnifying-glass side-search-icon"></i>
                     </div>
 
@@ -61,7 +63,12 @@
                     <!-- Sidebar with all the chat info -->
 
                     <ul class="chat-info">
-                        <li class="chat-info-specifications" v-for= "(contact, i) in contacts" :class=" i === currentContactIndex ? `active` : `` " @click="currentActiveContact(i)">
+                        <li class="chat-info-specifications" 
+                        v-for= "(contact, i) in filteredContacts"
+                        :key="contact.name" 
+                        :class=" i === currentContactIndex ? `active` : `` "
+                        @click="currentActiveContact(i)"
+                        >
                             <img class="chat-profile-picture" :src="contact.avatar" alt="friend profile picture">
                             <div class="other-person-info">
                                 <h3 class="chat-name">{{ contact.name }}</h3>

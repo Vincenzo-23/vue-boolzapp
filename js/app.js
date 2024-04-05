@@ -5,6 +5,8 @@ const { createApp } = Vue
         return {
             currentContactIndex: 0,
             inputMessageValue: ``,
+            searchValue: ``,
+            filteredContacts: [],
             contacts: [
                 {
                     name: 'Michele',
@@ -191,8 +193,10 @@ const { createApp } = Vue
             this.inputMessageValue = ""
         },
         receiveMessage(){
+            const messages = this.contacts[this.currentContactIndex].messages
+
             setTimeout(() => {
-                this.contacts[this.currentContactIndex].messages.push(
+                messages.push(
                     {
                         date: '10/01/2020 15:30:55',
                         message: `Ok`,
@@ -201,6 +205,19 @@ const { createApp } = Vue
                 )
             }, 1000)
         },
+        
+        
+
+    },
+    watch: {
+        searchValue: function(){
+
+            this.filteredContacts=this.contacts.filter(contact => contact.name.toLowerCase().includes(this.searchValue.toLowerCase()))
+        }
+
+    },
+    created: function () {
+        this.filteredContacts = this.contacts
         
     },
   }).mount('#app')
