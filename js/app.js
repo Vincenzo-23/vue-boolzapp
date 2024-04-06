@@ -215,6 +215,7 @@ const { createApp } = Vue
             this.filteredContacts=this.contacts.filter(contact => contact.name.toLowerCase().includes(this.searchValue.toLowerCase()))
         }
 
+
     },
     created: function () {
         this.filteredContacts = this.contacts

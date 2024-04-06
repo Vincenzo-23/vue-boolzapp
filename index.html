@@ -89,9 +89,12 @@
                     <!-- Header app bar -->
 
                     <header class="contact-info">
-                        <img class="contact-info-picture" :src="contacts[currentContactIndex].avatar" alt="friend profile picture">
+                        <img class="contact-info-picture" 
+                        :src="filteredContacts[currentContactIndex].avatar" 
+                        alt="friend profile picture"
+                        >
                         <div class="person-contact-info">
-                            <h3 class="person-name">{{ contacts[currentContactIndex].name }}</h3>
+                            <h3 class="person-name">{{ filteredContacts[currentContactIndex].name }}</h3>
                             <p class="last-access">Ultimo accesso oggi alle 16:26</p>
                         </div>
                         <ul class="contact-info-icons">
@@ -106,7 +109,10 @@
                     <main class="main-chat">
                         
 
-                        <div class="chat-content d-flex" v-for= "(el, i) in contacts[currentContactIndex].messages" :class="el.status">
+                        <div class="chat-content d-flex" 
+                        v-for= "(el, i) in filteredContacts[currentContactIndex].messages" 
+                        :class="el.status"
+                        >
                             <div class="chat-content-message">{{ el.message }}</div>
                             <div class="chat-content-time">{{ el.date.slice(11,16) }}</div>
                             <i class="fa-solid fa-chevron-down chat-content-arrow"></i>
@@ -130,7 +136,8 @@
                         placeholder="Scrivi un messaggio" 
                         class="chat-box" 
                         v-model.trim="inputMessageValue"
-                        @keyup.enter="sendMessage(), receiveMessage()">
+                        @keyup.enter="sendMessage(), receiveMessage()"
+                        >
 
                         <a href="#"><i class="fa-solid fa-microphone recording-icon"></i></a>
                     </footer>
